@@ -20,7 +20,7 @@ pipeline {
 			  
 			  withSonarQubeEnv(credentialsId: 'sonar-token') {
 			  
-			  ash  'mvn clean package sonar:sonar'
+			  sh  'mvn clean package sonar:sonar'
        
             }
    
@@ -38,7 +38,6 @@ pipeline {
 		 }
 		}
 	}
-  }
   
    stage('docker build and docker push to nexus repo'){
 	
@@ -63,5 +62,6 @@ pipeline {
 		    }
 	    }
 	}
-
-}
+   }
+  }
+ }
