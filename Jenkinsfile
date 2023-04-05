@@ -20,7 +20,7 @@ pipeline {
 			  
 			  withSonarQubeEnv(credentialsId: 'sonar-token') {
 			  
-			  sh  'mvn clean package sonar:sonar'
+			  ash  'mvn clean package sonar:sonar'
        
             }
    
@@ -44,8 +44,10 @@ pipeline {
 	
 	    steps{
 		  
+		   
 		  script{
-		     withCredentials([string(credentialsId: 'nexus_passwd', variable: 'nexus_creds')]) {
+		  
+		   withCredentials([string(credentialsId: 'nexus_passwd', variable: 'nexus_creds')]) {
     		  sh '''
 			   docker build -t 54.82.97.43:8083/springapp:${VERSION} .
 			  
@@ -56,12 +58,18 @@ pipeline {
 			   docker rmi 54.82.97.43:8083/springapp:${VERSION}
 			  
 			  '''
-			}
-		  }
-		
+		  
+		  
+		    }
 	    }
+	}
+
+}
 	
-       }
+    
+	
+
+   
 	  
 	 
 	  
