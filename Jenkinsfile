@@ -3,6 +3,7 @@ pipeline {
   environment {
   
      VERSION = "${env.BUILD_ID}"
+	}
   
   stages {
     stage('sonar quality check') {
@@ -55,11 +56,10 @@ pipeline {
 			  docker rmi 54.82.97.43:8083/springapp:${VERSION}
 			  
 			 '''
-			 }
+			}
 		  }
 		
 	    }
 	
          }
  
-  }
